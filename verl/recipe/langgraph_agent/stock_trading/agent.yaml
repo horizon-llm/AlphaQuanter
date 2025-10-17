@@ -1,0 +1,2 @@
+- name: trader
+  _target_: recipe.langgraph_agent.stock_trading.trader.TraderReactAgentLoop

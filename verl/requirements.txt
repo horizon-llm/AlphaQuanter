@@ -1,0 +1,10 @@
+backtrader
+langchain_core
+langgraph
+omegaconf
+pandas
+pydantic
+python_dateutil
+stockstats
+tiktoken
+tqdm
