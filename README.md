@@ -1,6 +1,6 @@
 # AlphaQuanter
 
-This repository contains the implementation of the paper [AlphaQuanter: An End-to-End Tool-Orchestrated Agentic Reinforcement Learning Framework for Stock Trading](https://www.arxiv.org/pdf/2510.14264).
+This repository contains the implementation of the paper [AlphaQuanter: An End-to-End Tool-Orchestrated Agentic Reinforcement Learning Framework for Stock Trading](https://aclanthology.org/2026.findings-acl.456.pdf).
 
 ---
 
@@ -105,13 +105,20 @@ The agent actively learns and refines information-seeking policies:
 ## 📝 Citation
 
 ```bibtex
-@misc{deng2025alphaquanterendtoendtoolorchestratedagentic,
-      title={AlphaQuanter: An End-to-End Tool-Orchestrated Agentic Reinforcement Learning Framework for Stock Trading}, 
-      author={Zheye Deng and Jiashu Wang},
-      year={2025},
-      eprint={2510.14264},
-      archivePrefix={arXiv},
-      primaryClass={cs.CE},
-      url={https://arxiv.org/abs/2510.14264}, 
+@inproceedings{deng-etal-2026-alphaquanter,
+    title = "{A}lpha{Q}uanter: An End-to-End Tool-Augmented Agentic Reinforcement Learning Framework for Stock Trading",
+    author = "Deng, Zheye  and
+      Yan, Weixiang  and
+      Yu, Changlong  and
+      Wang, Jiashu",
+    booktitle = "Findings of the {A}ssociation for {C}omputational {L}inguistics: {ACL} 2026",
+    month = jul,
+    year = "2026",
+    address = "San Diego, California, United States",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.findings-acl.456/",
+    doi = "10.18653/v1/2026.findings-acl.456",
+    pages = "9373--9394",
+    ISBN = "979-8-89176-395-1"
 }
 ```
