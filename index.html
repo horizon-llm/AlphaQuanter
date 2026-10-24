@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AlphaQuanter: An End-to-End Tool-Augmented Agentic Reinforcement Learning Framework for Stock Trading">
+  <meta name="keywords" content="CoT, Reasoning, LLMs, Reward">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AlphaQuanter: An End-to-End Tool-Augmented Agentic Reinforcement Learning Framework for Stock Trading</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <!-- <script src="https://assets.crowd.aws/crowd-html-elements.js"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+
+
+
+
+  <style>
+    /* .section {
+      padding: 3rem 1.5rem;
+    }
+
+    .container {
+      max-width: 800px;
+    }
+
+    #video-container {
+      margin-bottom: 2rem;
+    }
+
+    #question-container {
+      margin-bottom: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .button.is-primary {
+      background-color: #3273dc;
+      border-color: transparent;
+      color: #fff;
+      transition: background-color 0.3s ease;
+    }
+
+    .button.is-primary:hover {
+      background-color: #275ab0;
+      border-color: transparent;
+    }
+
+    .title img {
+      margin-right: 0.5rem;
+    }
+
+    .select {
+      width: 100%;
+      margin-top: 1rem;
+    } */
+
+    /* Hide the "Previewing Answers Submitted by Workers" message */
+    crowd-alert {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <div style="display: flex; align-items: center; justify-content: center;">
+            <!-- <img src="./static/image/worldevallogo.png" style="width:6em;vertical-align: middle" alt="Logo"/>  -->
+            <h1 class="title is-1 publication-title" style="display: inline-block;">AlphaQuanter: An End-to-End Tool-Augmented Agentic Reinforcement Learning Framework for Stock Trading</h1>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://dzy97.github.io/">Zheye Deng</a></span>,
+            <span class="author-block">Weixiang Yan</span>,
+            <span class="author-block">Changlong Yu</span>,
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=%7EJiashu_Wang4">Jiashu Wang</a></span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">HKUST</span>
+          </div>
+          <!-- <br>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><b style="color:#e08ba0; font-weight:normal"> <b>Under Review</b> </b></span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+
+              <span class="link-block">
+                <a href="https://aclanthology.org/2026.findings-acl.456.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/AlphaQuanter/AlphaQuanter"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+<!-- 
+              <span class="link-block">
+                <a href="#leaderboard"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon has-text-white">
+                    <i class="fa-solid fa-trophy"></i>
+
+                  </span>
+                  <span>Leaderboard</span>
+                </a>
+              </span> -->
+
+
+
+             <!-- <span class="link-block">
+    <a href="https://huggingface.co/spaces/Xuehai/MMWorld" 
+       class="external-link button is-normal is-rounded is-dark">
+      <span class="icon">
+        <img src="https://huggingface.co/front/assets/huggingface_logo.svg" 
+             alt="Hugging Face" 
+             style="height: 1em; vertical-align: middle;">
+      </span>
+      <span>Hugging Face Leaderboard</span>
+    </a>
+</span> -->
+
+              
+              <!-- Visualization Link. -->
+              <!-- <span class="link-block">
+                <a href="https://eval.ai/web/challenges/challenge-page/2359/overview"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon has-text-white">
+                      <i class="fa-solid fa-medal"></i>
+                  </span>
+                  <span>EvalAI</span>
+                </a>
+              </span> -->
+              <!-- EvalAI Link. -->
+              <!-- <span class="link-block">
+                <a href="#examples"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon has-text-white">
+                    <i class="fa-solid fa-book"></i>
+                  </span>
+                  <span>Examples</span>
+                </a>
+              </span> -->
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-3">
+          <img width="5%" src="./static/image/business.png" alt="Pipeline Icon" style="vertical-align: middle; margin-right: 8px;">
+          Overall Workflow of AlphaQuanter
+        </h2> 
+        <!-- <h2 class="title is-3"><img id="painting_icon" width="5%" src="https://cdn-icons-png.flaticon.com/512/5379/5379860.png"> Soft Thinking Pipeline </h2>  -->
+      </div>
+    </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-six-fifths">  
+            <img id="model" width="80%" src="./static/image/figure.png" style="display: block; margin: 0 auto;">
+        </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">
+        <!-- <img width="5%" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" style="vertical-align: middle; margin-right: 10px;"> -->
+        <img width="5%" src="./static/image/x-letter.png" alt="Abstract Icon" style="vertical-align: middle; margin-right: 8px;">
+          Abstract
+        </h2>
+        <!-- <h2 class="title is-3">Abstract</h2> -->
+        <div class="content has-text-justified">
+          <p>
+          While Large Language Model (LLM) agents show promise in automated trading, they still face critical limitations. Prominent multi-agent frameworks often suffer from inefficiency, produce inconsistent signals, and lack the end-to-end optimization required to learn a coherent strategy from market feedback. To address this, we introduce AlphaQuanter, a single-agent framework that uses reinforcement learning (RL) to learn a dynamic policy over a transparent, tool-augmented decision workflow, which empowers a single agent to autonomously orchestrate tools and proactively acquire information on demand, establishing a transparent and auditable reasoning process. Extensive experiments demonstrate that AlphaQuanter achieves state-of-the-art performance on key financial metrics. Moreover, its interpretable reasoning reveals sophisticated strategies, offering novel and valuable insights for human traders.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-3">
+          <img width="5%" src="./static/image/evaluation-emoji.png" alt="Distribution Icon" style="vertical-align: middle; margin-right: 10px;">
+           Evaluation Results on 5 Stocks
+        </h2> 
+      </div>
+    </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-six-fifths">     
+            <img id="model" width="100%" src="./static/image/evaluation.png">
+            <h3 class="subtitle has-text-centered">
+  <p style="font-family:'Times New Roman'; font-size:28px;">
+    <b>Key Observations</b>
+  </p>
+  <ul style="font-family:'Times New Roman'; font-size:24px; display:inline-block; text-align:left; margin:0 auto; list-style-type:disc; padding-left:20px;">
+    <li>A single-agent framework is generally superior to a multi-agent one.</li>
+    <li>Prompt-based reasoning alone is insufficient for trading.</li>
+    <li>Our proposed AlphaQuanter, optimized with end-to-end reinforcement learning, significantly outperforms all baselines.</li>
+  </ul>
+</h3>
+        </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-3">
+          <img width="5%" src="./static/image/good-feedback.png" alt="Math Icon" style="vertical-align: middle; margin-right: 10px;">
+           Training Dynamics & Validation Performance
+        </h2> 
+      </div>
+    </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-six-fifths">     
+            <img id="model" width="100%" src="./static/image/training.png">
+            <h3 class="subtitle has-text-centered">
+              <p style="font-family:Times New Roman"><b>The training dynamics reveal that while both models learn, the 7B model enters a sophisticated policy refinement phase, whereas the 3B model converges prematurely to a simplistic strategy.</b></p>
+            </h3> 
+            <br>
+            <img id="model" width="100%" src="./static/image/validation.png">
+            <h3 class="subtitle has-text-centered">
+              <p style="font-family:Times New Roman"><b>Validation performance confirms the 7B model's superior generalization, as it not only improves returns but also learns to effectively manage downside risk (decreasing MDD), a crucial capability the 3B model fails to acquire.</b></p>
+            </h3>   
+        </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-3">
+          <img width="5%" src="./static/image/tool-box.png" alt="Example Icon" style="vertical-align: middle; margin-right: 8px;">
+          Tool Usage Patterns
+        </h2> 
+        <!-- <h2 class="title is-3"><img id="painting_icon" width="5%" src="https://cdn-icons-png.flaticon.com/512/5379/5379860.png"> An example of Soft Thinking and CoT</h2>  -->
+      </div>
+    </div>
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-six-fifths">  
+            <img id="model" width="60%" src="./static/image/pattern.png">
+            <h3 class="subtitle has-text-centered">
+              <p style="font-family:Times New Roman"><b>Evolution of tool-selection strategies for AlphaQuanter-3B and -7B during training, where heatmap intensity indicates percentile-based reliance on four data sources ([M], [S], [X], [F]).</b></p>
+            </h3>   
+            <h3 class="subtitle has-text-centered">
+  <p style="font-family:'Times New Roman'; font-size:28px;">
+    <b>Key Observations</b>
+  </p>
+  <ul style="font-family:'Times New Roman'; font-size:24px; display:inline-block; text-align:left; margin:0 auto; list-style-type:disc; padding-left:20px;">
+    <li>Agents actively learn and refine their information-seeking policies, proving their strategies are dynamic, not static.</li>
+    <li>The 7B model develops a focused and selective strategy, while the 3B model’s approach is more diffuse and less discerning.</li>
+    <li>The 7B model discovers a sophisticated, expert-like heuristic, prioritizing key technical indicators (like trend and volume) and using sentiment or macro data as secondary signals.</li>
+  </ul>
+</h3>
+        </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-3">
+          <img width="5%" src="./static/image/experiment.png" alt="Math Icon" style="vertical-align: middle; margin-right: 10px;">
+           Ablation Study
+        </h2> 
+      </div>
+    </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-six-fifths">     
+            <img id="model" width="50%" src="./static/image/ablation.png">
+            <h3 class="subtitle has-text-centered">
+              <p style="font-family:Times New Roman"><b>Our ablation study validates the critical contribution of our reward components and the high sensitivity of the decision threshold (θ) to the agent's overall performance and strategic behavior.</b></p>
+            </h3>   
+        </div>
+  </div>
+</section>
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{deng-etal-2026-alphaquanter,
+    title = "{A}lpha{Q}uanter: An End-to-End Tool-Augmented Agentic Reinforcement Learning Framework for Stock Trading",
+    author = "Deng, Zheye  and
+      Yan, Weixiang  and
+      Yu, Changlong  and
+      Wang, Jiashu",
+    booktitle = "Findings of the {A}ssociation for {C}omputational {L}inguistics: {ACL} 2026",
+    month = jul,
+    year = "2026",
+    address = "San Diego, California, United States",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.findings-acl.456/",
+    doi = "10.18653/v1/2026.findings-acl.456",
+    pages = "9373--9394",
+    ISBN = "979-8-89176-395-1"
+}</code></pre>
+  </div>
+</section>
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is adapted from <a rel="license"
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> and <a rel="license"
+            href="https://gligen.github.io/">GLIGEN</a>, licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+
+
+
+<!-- Additional libraries for parsing CSV -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.21/jquery.csv.min.js"></script>
+
+</body>
+</html>
